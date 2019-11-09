@@ -1,0 +1,25 @@
+import requests #imports module of urllib for opening and reading URLs
+import pandas as pd #imports pandas library under the name pd. This will be used later for creating aesthetically pleasing dataframe
+import re
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import nltk
+#from nltk.sentiment.vader import SentimentIntensityAnalyzer
+websitename = ('https://fnovels.com/vendetta/page-1-10035429.html')
+websitename1 = ('https://fnovels.com/vendetta/page-2-10035430.html')
+#websitecom = (websitename, websitename1)
+website = requests.get(websitename).text #creates a variable called 'website'. This contains the URL for the website the user has entered, gathers the data of chosen website and reads it as a .text file.
+v = website.translate({ord(i): None for i in '?.'',(0):;!"'})
+#print(v)
+check = re.findall(r'Nic', v)
+print(check)
+count = v.count('Nic')
+print('The count of Rose is:', count)
+neg = []
+pos = []
+if count == 1:
+    print('yay')
+    pos.append(+1)
+else:
+    print('hello')
+    neg.append(-1)
+print(pos)

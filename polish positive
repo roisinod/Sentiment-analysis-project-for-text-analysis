@@ -1,0 +1,29 @@
+import re as re
+def settingupfile():
+    f = open("Vendetta.txt", 'r')
+    f = f.read()
+    v = f.translate({ord(i): None for i in '?.'',(0):;!"'})
+    print(re.findall(r"([^.]*?Luca[^.]*\.)", f))
+    x = re.findall(r"([^.]*?Luca[^.]*\.)", f)
+    file = open("copy.txt", "r")
+    file = file.read()
+
+def positivewords():
+    file = open("copy.txt", "r")
+    file = file.read()
+    positive = ('constructive effective forward-looking good practical productive reasonable useful affirmative progressive sound efficacious cheerful contented delighted ecstatic elated glad joyful joyous jubilant lively laugh merry overjoyed peaceful pleasant pleased thrilled upbeat blessed blest blissful blithe captivated chipper chirpy content convivial exultant flying high gay gleeful gratified intoxicated jolly laughing light looking-good mirthful peppy perky playful sparkling sunny tickled up embrace feel kiss caress clasp cling cosset court cuddle fondle hold hug lick neck pet press shine soothe stroke tryst love happy hopeful hope affable courteous courtly genial ingratiating polite soft-spoken sophisticated urbane worldly agreeable bland civilized cordial cute handsome chuckle smile')
+    checkpositive = any(item in file for item in positive)
+    if checkpositive is True:
+        print("Contains positive words.")
+    else:
+        print("No positive words.")
+    wordcount =[]
+    positivewordcount = sum(file.count(x) for x in positive.split())
+    print(positivewordcount)
+    wordcount.append(positivewordcount)
+
+    print(file.count('laugh'))
+
+#print(file.count('Sophie'))
+settingupfile()
+positivewords()
